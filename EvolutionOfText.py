@@ -8,40 +8,39 @@
 import string
 import random
 import time
+#import matplotlib.pyplot as plt
 
 
-def evolution():
-    possibleCharacters = string.ascii_lowercase + string.digits + string.ascii_uppercase + ' .,!?;:'
+def evolution(target, repetitions):
+    generation_data = []
 
-    #target = str(input("Enter your target text: "))
-    target = 'Hallo'
-    attemptThis = ''.join(random.choice(possibleCharacters) for i in range(len(target)))
-    attemptNext = ''
-
-    completed = False
-
-    generation = 0
-
-    while completed == False:
-        #print(attemptThis)
+    for i in range(repetitions):
+        possibleCharacters = string.ascii_lowercase + string.digits + string.ascii_uppercase + ' .,!?;:'
+        attemptThis = ''.join(random.choice(possibleCharacters) for i in range(len(target)))
         attemptNext = ''
-        completed = True
-        for i in range(len(target)):
-            if attemptThis[i] != target[i]:
-                completed = False
-                attemptNext += random.choice(possibleCharacters)
-            else:
-                attemptNext += target[i]
-        generation += 1
-        attemptThis = attemptNext
-        time.sleep(0.1)
-    print("Target matched! That took " + str(generation) + " generation(s)")
+        completed = False
+        generation = 0
 
+        while completed == False:
+            #print(attemptThis)
+            attemptNext = ''
+            completed = True
+            for i in range(len(target)):
+                if attemptThis[i] != target[i]:
+                    completed = False
+                    attemptNext += random.choice(possibleCharacters)
+                else:
+                    attemptNext += target[i]
+            generation += 1
+            attemptThis = attemptNext
+            time.sleep(0.1)
+        generation_data.append(generation)
+        #print("Target matched! That took " + str(generation) + " generation(s)")
+    return generation_data
 #######################################################
 
-repeat = int(input("How many repetitions? "))
+target = input("Please enter target: ")
+repetitions = int(input("How many repetitions? "))
 
-for i in range(repeat):
-        evolution()
-
-# Missing: Write no. of generations in file every time the script runs and make an experiment with running 100-10000 times on raspberry pi
+generation_data = evolution(target, repetitions)
+print("Generations for the target", target, ":", generation_data)
