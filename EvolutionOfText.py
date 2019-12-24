@@ -1,6 +1,5 @@
 #-----------------------------------------------------
 # Python 'Evolution of Text' Program
-# More programs at: usingpython.com/programs
 # Slightly modified by D.R. on Jan 27, 2018
 # Modified for Python 3 on Dec 22, 2019
 #-----------------------------------------------------
