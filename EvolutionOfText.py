@@ -51,7 +51,6 @@ def evolution(target, repetitions):
                     attemptNext += target[i]
             generation += 1
             attemptThis = attemptNext
-            time.sleep(0.1)
         generation_data.append(generation)
     return generation_data
 
