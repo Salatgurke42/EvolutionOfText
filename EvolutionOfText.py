@@ -12,6 +12,24 @@ import time
 
 
 def evolution(target, repetitions):
+    """
+    Summary line.
+
+    Extended description of function.
+
+    Parameters
+    ----------
+    target: str
+        Target string which Python tries to match it's word to
+    repetitions: int
+        number of repetitions for averaging of the results
+
+    Returns
+    -------
+    generation_data: list
+        number of generations for each repetition
+
+    """
     generation_data = []
 
     for i in range(repetitions):
@@ -35,9 +53,7 @@ def evolution(target, repetitions):
             attemptThis = attemptNext
             time.sleep(0.1)
         generation_data.append(generation)
-        #print("Target matched! That took " + str(generation) + " generation(s)")
     return generation_data
-#######################################################
 
 target = input("Please enter target: ")
 repetitions = int(input("How many repetitions? "))
